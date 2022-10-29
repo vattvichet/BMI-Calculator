@@ -14,7 +14,7 @@ class ReusableCard extends StatelessWidget {
       child: cardChild,
       margin: EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: cardColor,
+        color: color,
         borderRadius: BorderRadius.circular(10),
       ),
     );
