@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:bmi_calculator/result_page.dart';
 import 'package:bmi_calculator/reusableCard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'result_page.dart';
 
 import 'constants.dart';
 import 'genderCard.dart';
@@ -238,10 +240,21 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: Colors.red,
-            height: 100,
-            width: double.infinity,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ResultPage()));
+            },
+            child: Container(
+              alignment: Alignment.center,
+              color: Colors.red,
+              height: 100,
+              width: double.infinity,
+              child: Text(
+                "CALCULATE",
+                style: KGenderTextStyle,
+              ),
+            ),
           ),
         ],
       ),
