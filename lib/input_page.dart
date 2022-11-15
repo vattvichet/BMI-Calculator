@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:bmi_calculator/calculator_brain.dart';
 import 'package:bmi_calculator/result_page.dart';
 import 'package:bmi_calculator/reusableCard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'buttom_button.dart';
 import 'result_page.dart';
 
 import 'constants.dart';
@@ -55,6 +57,7 @@ class _InputPageState extends State<InputPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
+            flex: 2,
             child: Row(
               children: [
                 Expanded(
@@ -90,170 +93,182 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-              child: ReusableCard(
-            onPressed: () {},
-            color: KCardColor,
-            cardChild: Container(
+              flex: 5,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("HIGHT", style: KGenderTextStyle),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        height.toStringAsFixed(0),
-                        style: KValueTextStyle,
+                  Expanded(
+                      child: ReusableCard(
+                    onPressed: () {},
+                    color: KCardColor,
+                    cardChild: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("HIGHT", style: KGenderTextStyle),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                height.toStringAsFixed(0),
+                                style: KValueTextStyle,
+                              ),
+                              Text(
+                                "cm",
+                                style: KValueTextStyle,
+                              ),
+                            ],
+                          ),
+                          SliderTheme(
+                            data: SliderTheme.of(context).copyWith(
+                                inactiveTrackColor: Colors.grey,
+                                activeTrackColor: Colors.pink,
+                                thumbColor: Color.fromARGB(255, 222, 138, 166),
+                                thumbShape: RoundSliderThumbShape(
+                                    enabledThumbRadius: 15),
+                                overlayColor:
+                                    Color.fromARGB(100, 222, 138, 166),
+                                overlayShape:
+                                    RoundSliderOverlayShape(overlayRadius: 30)),
+                            child: Slider(
+                                value: height,
+                                min: 120,
+                                max: 220,
+                                onChanged: (double newValue) {
+                                  setState(() {
+                                    height = newValue;
+                                  });
+                                }),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "cm",
-                        style: KValueTextStyle,
-                      ),
-                    ],
-                  ),
-                  SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                        inactiveTrackColor: Colors.grey,
-                        activeTrackColor: Colors.pink,
-                        thumbColor: Color.fromARGB(255, 222, 138, 166),
-                        thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 15),
-                        overlayColor: Color.fromARGB(100, 222, 138, 166),
-                        overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 30)),
-                    child: Slider(
-                        value: height,
-                        min: 120,
-                        max: 220,
-                        onChanged: (double newValue) {
-                          setState(() {
-                            height = newValue;
-                          });
-                        }),
+                    ),
+                  )),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: ReusableCard(
+                          onPressed: () {},
+                          color: KCardColor,
+                          cardChild: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "WEIGHT",
+                                style: KGenderTextStyle,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                weight.toStringAsFixed(0),
+                                style: KValueTextStyle,
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.minus,
+                                    onPressed: () {
+                                      setState(() {
+                                        weight -= 1;
+                                      });
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.plus,
+                                    onPressed: () {
+                                      setState(() {
+                                        weight += 1;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        )),
+                        Expanded(
+                            child: ReusableCard(
+                          onPressed: () {},
+                          color: KCardColor,
+                          cardChild: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "AGE",
+                                style: KGenderTextStyle,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                age.toStringAsFixed(0),
+                                style: KValueTextStyle,
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.minus,
+                                    onPressed: () {
+                                      setState(() {
+                                        age -= 1;
+                                      });
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.plus,
+                                    onPressed: () {
+                                      setState(() {
+                                        age += 1;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        )),
+                      ],
+                    ),
                   ),
                 ],
-              ),
-            ),
-          )),
+              )),
           Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                    child: ReusableCard(
-                  onPressed: () {},
-                  color: KCardColor,
-                  cardChild: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "WEIGHT",
-                        style: KGenderTextStyle,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        weight.toStringAsFixed(0),
-                        style: KValueTextStyle,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          RoundIconButton(
-                            icon: FontAwesomeIcons.minus,
-                            onPressed: () {
-                              setState(() {
-                                weight -= 1;
-                              });
-                            },
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          RoundIconButton(
-                            icon: FontAwesomeIcons.plus,
-                            onPressed: () {
-                              setState(() {
-                                weight += 1;
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )),
-                Expanded(
-                    child: ReusableCard(
-                  onPressed: () {},
-                  color: KCardColor,
-                  cardChild: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "AGE",
-                        style: KGenderTextStyle,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        age.toStringAsFixed(0),
-                        style: KValueTextStyle,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          RoundIconButton(
-                            icon: FontAwesomeIcons.minus,
-                            onPressed: () {
-                              setState(() {
-                                age -= 1;
-                              });
-                            },
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          RoundIconButton(
-                            icon: FontAwesomeIcons.plus,
-                            onPressed: () {
-                              setState(() {
-                                age += 1;
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultPage()));
-            },
-            child: Container(
-              alignment: Alignment.center,
-              color: Colors.red,
-              height: 100,
-              width: double.infinity,
-              child: Text(
-                "CALCULATE",
-                style: KGenderTextStyle,
-              ),
+            flex: 1,
+            child: ButtonButton(
+              onClickTitle: "CALCULATE",
+              onTap: () {
+                CalculatorBrain cal =
+                    CalculatorBrain(height: height, weight: weight);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultPage(
+                              bmiValue: cal.getBmi(),
+                              bmiResult: cal.getResult(),
+                              bmiAdvise: cal.getAdvise(),
+                            )));
+                print(cal.getBmi());
+                print(cal.height);
+                print(cal.weight);
+              },
             ),
           ),
         ],

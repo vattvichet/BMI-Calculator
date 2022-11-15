@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ReusableCard extends StatelessWidget {
   const ReusableCard(
-      {Key key, @required this.color, this.cardChild, @required this.onPressed})
+      {Key key, @required this.color, this.cardChild, this.onPressed})
       : super(key: key);
   final Color color;
   final Widget cardChild;
